@@ -1,7 +1,7 @@
-package com.project_name.pages;
+package com.crm.pages;
 
 
-import com.fleet.utilities.Driver;
+import com.crm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
