@@ -13,7 +13,7 @@ Feature: As a user, I want to access the Drive page.
 
   Scenario Outline: Login with valid credentials for HR, Helpdesk, and Marketing user.
   After successfully login user navigated to the Drive navigation link.
-    When user enters valid "<login credential>" and valid "<password>"
+    When user enters valid "<login credential>" and valid "<password>" and press login button
     Then   user should be able to login and redirected to the homepage
     Then user click on the "Drive" navigation link
     Then the user should be able to see the following modules in the Drive navigation menu:
