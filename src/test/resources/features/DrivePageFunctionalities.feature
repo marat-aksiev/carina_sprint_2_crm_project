@@ -17,7 +17,6 @@ Feature: As a user, I want to access the Drive page.
     Then   user should be able to login and redirected to the homepage
     Then user click on the "Drive" navigation link
     Then the user should be able to see the following modules in the Drive navigation menu:
-      | Module Name                         |
       | My Drive                            |
       | All Documents                       |
       | Company Drive                       |
