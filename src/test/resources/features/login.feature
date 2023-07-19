@@ -1,14 +1,22 @@
 @login
-Feature: Users should be able to login
 
-  Background: User is already in the log in page
-    Given the user is on the login page
+Feature: As a user I should be able to login
+  User Story:
+  As a user, I should be able to login with correct credentials to different accounts. And dashboard should be displayed.
+  Accounts are: HR, Marketing, Helpdesk
 
-@wip
-  Scenario: Verify login with different user types
-    Given the user logged in as "<userType>"
-    Given the user logged in with username as "User1" and password as "UserUser123"
+  Background:
+    Given user is on the login page
 
+  Scenario Outline: Login with valid credentials for HR, Helpdesk, and Marketing user.
+    When user enters valid "<login credential>" and valid "<password>"
+    Then  the user should be able to login and redirected homepage
+
+    Examples:
+      | login credential               | password |
+      | hr12@cybertekschool.com        | UserUser |
+      | helpdesk12@cybertekschool.com  | UserUser |
+      | marketing12@cybertekschool.com | UserUser |
 
 
 
