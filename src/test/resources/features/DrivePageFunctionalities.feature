@@ -12,17 +12,26 @@ Feature: As a user, I want to access the Drive page.
 
   Scenario Outline: Login with valid credentials for HR, Helpdesk, and Marketing user.
     When user enters valid "<login credential>" and valid "<password>"
-    Then  the user should be able to login and redirected homepage and title should contain:  "<drive>" "<login credential>"
+    Then   user should be able to login and redirected to the homepage
+    Then user click on the "Drive" navigation link
+    Then the user should be able to see the following modules in the Drive navigation menu:
+      | Module Name                         |
+      | My Drive                            |
+      | All Documents                       |
+      | Company Drive                       |
+      | Sales and Marketing                 |
+      | Top Management's documents          |
+      | Drive Cleanup                       |
 
     Examples:
-      | login credential               | password ||drive|
-      | hr12@cybertekschool.com        | UserUser || Drive:     |
-      | hr10@cybertekschool.com        | UserUser ||     |
-      | hr9@cybertekschool.com         | UserUser ||     |
-      | hr5@cybertekschool.com         | UserUser ||     |
-      | helpdesk11@cybertekschool.com  | UserUser ||     |
-      | helpdesk5@cybertekschool.com   | UserUser ||     |
-      | helpdesk6@cybertekschool.com   | UserUser ||     |
-      | marketing51@cybertekschool.com | UserUser ||     |
-      | marketing60@cybertekschool.com | UserUser ||     |
-      | marketing32@cybertekschool.com | UserUser ||     |
+      | login credential               | password |
+      | hr12@cybertekschool.com        | UserUser |
+      | hr10@cybertekschool.com        | UserUser |
+      | hr9@cybertekschool.com         | UserUser |
+      | hr5@cybertekschool.com         | UserUser |
+      | helpdesk11@cybertekschool.com  | UserUser |
+      | helpdesk5@cybertekschool.com   | UserUser |
+      | helpdesk6@cybertekschool.com   | UserUser |
+      | marketing51@cybertekschool.com | UserUser |
+      | marketing60@cybertekschool.com | UserUser |
+      | marketing32@cybertekschool.com | UserUser |
