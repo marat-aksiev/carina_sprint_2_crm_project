@@ -1,3 +1,4 @@
+@B29G11-301
 Feature: As a user, I want to access the Drive page.
   Verify the users view the following 6 modules on the Drive page.
   My Drive
@@ -11,6 +12,7 @@ Feature: As a user, I want to access the Drive page.
     Given user is on the login page
 
   Scenario Outline: Login with valid credentials for HR, Helpdesk, and Marketing user.
+  After successfully login user navigated to the Drive navigation link.
     When user enters valid "<login credential>" and valid "<password>"
     Then   user should be able to login and redirected to the homepage
     Then user click on the "Drive" navigation link
