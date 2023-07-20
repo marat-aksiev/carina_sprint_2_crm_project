@@ -38,8 +38,8 @@ public abstract class BasePage {
     @FindBy(linkText = "My User")
     public WebElement myUser;
 
-    @FindBy(xpath = "//span[normalize-space()='Drive']")
-    public WebElement DriveNavigationLink;
+    @FindBy(xpath = "//ul[@class='menu-items']//li")
+    public List <WebElement> navigationLinks;
 
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);

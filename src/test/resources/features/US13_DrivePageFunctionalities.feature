@@ -1,4 +1,4 @@
-@B29G11-301
+@B29G11-301 @US13 @regression @smoke
 Feature: As a user, I want to access the Drive page.
   Verify the users view the following 6 modules on the Drive page.
   My Drive
