@@ -8,22 +8,42 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class US8_CompanyStructure_StepDefinitions {
 
     CompanyStructurePage companyStructurePage = new CompanyStructurePage();
-    LoginPage login = new LoginPage();
+    LoginPage loginPage = new LoginPage();
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+    @Given("user is on the login page")
+    public void user_is_on_the_login_page() {
+
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+    }
+
+    @When("user enters valid {string} and valid {string}")
+    public void user_enters_valid_credentials(String username, String password) {
+        loginPage.login(username,password);
+    }
+
+    @Then("the user should be able to login and redirected homepage")
+    public void user_can_login_and_redirects_to_homepage() {
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "(1) Portal";
+        Assert.assertEquals("Title verification failed", expectedTitle, actualTitle);
+
+    }
 
     WebElement employeesMenu;
     @Given("user navigates to the Employees menu and clicks on it")
     public void userNavigatesToTheEmployeesMenuAndClicksOnIt() {
         JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-
-        login.loginButton.click();
-
         js.executeScript("arguments[0].scrollIntoView(true)", employeesMenu);
         employeesMenu.click();
     }
