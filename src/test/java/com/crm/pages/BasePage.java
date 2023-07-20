@@ -38,6 +38,9 @@ public abstract class BasePage {
     @FindBy(linkText = "My User")
     public WebElement myUser;
 
+    @FindBy(xpath = "//span[normalize-space()='Drive']")
+    public WebElement DriveNavigationLink;
+
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
