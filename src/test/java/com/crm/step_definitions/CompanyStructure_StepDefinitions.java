@@ -12,84 +12,60 @@ import org.openqa.selenium.WebElement;
 
 public class CompanyStructure_StepDefinitions {
 
-    LoginPage loginPage = new LoginPage();
-    @Given("user is logged in as HR user")
-    public void isLoggedInAsHRUser() {
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-        loginPage.login(ConfigurationReader.getProperty("hr_username"), ConfigurationReader.getProperty("hr_password"));
-        loginPage.loginButton.click();
-    }
-
     JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
     WebElement employeesMenu;
-    @When("user navigates to the {string} menu")
-    public void navigatesToTheMenu(String addDepartmentButton) {
+    @Given("user navigates to the Employees menu and clicks on it")
+    public void userNavigatesToTheEmployeesMenuAndClicksOnIt() {
         js.executeScript("arguments[0].scrollIntoView(true)", employeesMenu);
         employeesMenu.click();
     }
 
-    @And("user clicks on {string} button")
-    public void clicksOnButton(String employeesMenu) {
-
+    @When("user navigates to the Add Department menu and clicks on the button")
+    public void userNavigatesToTheAddDepartmentMenuAndClicksOnTheButton() {
+        WebElement addDepartmentButton  = Driver.getDriver().findElement();
     }
 
-    @And("user should see a pop-up window")
-    public void shouldSeeAPopUpWindow(String arg0) {
+    @Then("user should see Add department pop-up window")
+    public void userShouldSeeAddDepartmentPopUpWindow() {
     }
 
-    @When("user clicks on {string} text")
-    public void clicksOnText(String arg0, String arg1) {
+    @When("user clicks on Select from structure text")
+    public void userClicksOnSelectFromStructureText() {
     }
 
-    @And("user clicks on {string} option")
-    public void clicksOnOption(String arg0, String arg1) {
+    @And("user clicks on Company option")
+    public void userClicksOnCompanyOption() {
     }
 
-    @And("user adds details of new department")
-    public void addsDetailsOfNewDepartment(String arg0) {
+    @Then("user adds details of new department")
+    public void userAddsDetailsOfNewDepartment() {
     }
 
-    @And("user clicks anywhere on pop-up window")
-    public void clicksAnywhereOnPopUpWindow(String arg0) {
+    @When("user clicks anywhere on pop-up window")
+    public void userClicksAnywhereOnPopUpWindow() {
     }
 
-    @And("user should see {string} and {string} buttons")
-    public void shouldSeeAndButtons(String arg0, String arg1, String arg2) {
+    @And("user should see ADD and CLOSE buttons")
+    public void userShouldSeeADDAndCLOSEButtons() {
     }
 
-    @And("user clicks {string} button")
-    public void clicksButton(String arg0, String arg1) {
+    @And("user clicks ADD button")
+    public void userClicksADDButton() {
     }
 
     @Then("user added new department successfully")
-    public void addedNewDepartmentSuccessfully(String arg0) {
+    public void userAddedNewDepartmentSuccessfully() {
     }
 
-    @Given("user is logged in as Helpdesk user")
-    public void isLoggedInAsHelpdeskUser(String arg0) {
+    @When("user is directed to the Company Structure page")
+    public void userIsDirectedToTheCompanyStructurePage() {
     }
 
-    @And("user clicks on {string} menu button")
-    public void clicksOnMenuButton(String arg0, String arg1) {
+    @Then("user does not have Add Department option")
+    public void userDoesNotHaveAddDepartmentOption() {
     }
 
-    @And("user is directed to the {string} page")
-    public void isDirectedToThePage(String arg0, String arg1) {
-    }
-
-    @Then("user does not have {string} option")
-    public void doesNotHaveOption(String arg0, String arg1) {
-    }
-
-    @Given("the user is logged in as a {string}>")
-    public void theUserIsLoggedInAsA(String arg0) {
-    }
-
-    @And("user navigates to the {string} menu")
-    public void userNavigatesToTheMenu(String arg0) {
-    }
-
-    @Then("user should see {string} page")
-    public void userShouldSeePage(String arg0) {
+    @Then("user should see Company Structure page")
+    public void userShouldSeeCompanyStructurePage() {
     }
 }
