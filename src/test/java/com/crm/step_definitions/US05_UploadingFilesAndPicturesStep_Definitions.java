@@ -7,7 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
-public class UploadStep_Definitions {
+public class US05_UploadingFilesAndPicturesStep_Definitions {
     LoginPage loginPage=new LoginPage();
     @Given("user is already logged in to the crm app")
     public void userIsAlreadyLoggedInToTheCrmApp() {
