@@ -25,6 +25,7 @@ public class CompanyStructure_StepDefinitions {
     @When("user navigates to the {string} menu")
     public void navigatesToTheMenu(String addDepartmentButton) {
         js.executeScript("arguments[0].scrollIntoView(true)", employeesMenu);
+        employeesMenu.click();
     }
 
     @And("user clicks on {string} button")

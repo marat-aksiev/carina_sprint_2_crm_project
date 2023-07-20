@@ -39,7 +39,7 @@ Feature: Adding a Department to the Company Structure
   Scenario Outline: All user types should be able to display company structure
     Given the user is logged in as a "<UserType">
     And user navigates to the "Employees" menu
-    And "user" clicks on "Employee" menu button
+    And user clicks on "Employee" menu button
     Then user should see "Company Structure" page
     Examples:
       | UserType  |
