@@ -14,14 +14,14 @@ public class LoginPage {
     }
 
 
-    @FindBy(name = "USER_LOGIN")
+    @FindBy(xpath = "//input[@placeholder='Login']")
     public WebElement login;
 
 
-    @FindBy(name = "USER_PASSWORD")
+    @FindBy(xpath = "//input[@type='password']")
     public WebElement password;
 
-    @FindBy(xpath = "//input[@type='submit']")
+    @FindBy(xpath = "//input[@value='Log In']")
     public WebElement loginButton;
 
     @FindBy(css = ".errortext")
