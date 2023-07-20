@@ -1,5 +1,6 @@
 package com.crm.step_definitions;
 
+import com.crm.pages.CompanyStructurePage;
 import com.crm.pages.LoginPage;
 import com.crm.utilities.ConfigurationReader;
 import com.crm.utilities.Driver;
@@ -10,19 +11,26 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
-public class CompanyStructure_StepDefinitions {
+public class US8_CompanyStructure_StepDefinitions {
 
-    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+    CompanyStructurePage companyStructurePage = new CompanyStructurePage();
+    LoginPage login = new LoginPage();
+
     WebElement employeesMenu;
     @Given("user navigates to the Employees menu and clicks on it")
     public void userNavigatesToTheEmployeesMenuAndClicksOnIt() {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+
+        login.loginButton.click();
+
         js.executeScript("arguments[0].scrollIntoView(true)", employeesMenu);
         employeesMenu.click();
     }
 
     @When("user navigates to the Add Department menu and clicks on the button")
     public void userNavigatesToTheAddDepartmentMenuAndClicksOnTheButton() {
-        WebElement addDepartmentButton  = Driver.getDriver().findElement();
+
     }
 
     @Then("user should see Add department pop-up window")
