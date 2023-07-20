@@ -24,11 +24,23 @@ public class LoginPage {
     @FindBy(xpath = "//input[@value='Log In']")
     public WebElement loginButton;
 
+    @FindBy(css = ".errortext")
+    public WebElement errorMessage;
+
+    @FindBy(id = "USER_REMEMBER")
+    public  WebElement rememberMeCheckBox;
+
+
+
+
+
+
 
     public void login(String loginStr, String passwordStr) {
         login.sendKeys(loginStr);
         password.sendKeys(passwordStr);
         loginButton.click();
+
 
     }
 }
