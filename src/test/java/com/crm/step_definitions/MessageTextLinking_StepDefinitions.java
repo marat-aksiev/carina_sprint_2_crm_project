@@ -15,6 +15,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 import java.util.Set;
 
@@ -56,7 +57,6 @@ public class MessageTextLinking_StepDefinitions {
     public void clicks_save_button() {
         portalPage.saveBtn.click();
         wait.until(ExpectedConditions.elementToBeClickable(portalPage.sendBtn));
-        portalPage.sendBtn.click();
     }
 
     @Given("user is on the Login page")
@@ -89,7 +89,7 @@ public class MessageTextLinking_StepDefinitions {
 
     @And("clicks Send button")
     public void clicksSendButton() {
-//        portalPage.sendBtn.click();
+        portalPage.sendBtn.click();
     }
 
     @Then("user is on the {string} webpage")
@@ -103,7 +103,6 @@ public class MessageTextLinking_StepDefinitions {
                 break;
             }
         }
-
         String actualURL = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(expectedURL, actualURL);
     }

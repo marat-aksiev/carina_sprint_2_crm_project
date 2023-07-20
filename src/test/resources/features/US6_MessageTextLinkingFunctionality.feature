@@ -21,6 +21,7 @@ Feature: Default
 		And clicks link button
 		And enters link "<address>"
 		And clicks Save button
+		And clicks Send button
 		Then the link "<address>" is attached to the text
 		Examples:
 		    |text       |address                    |
