@@ -3,7 +3,7 @@ Feature: Adding a Department to the Company Structure
   Agile story: As an HR user, I want to be able to add a department to the company structure
   So that the organization can manage its departments effectively
 
-  Background:
+  Background: User is on the login page
 
 @hr
   Scenario: HR user should be able to add department from the company structure
