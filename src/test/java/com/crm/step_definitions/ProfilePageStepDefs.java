@@ -1,6 +1,7 @@
 package com.crm.step_definitions;
 
 import com.crm.pages.ProfilePage;
+import com.crm.utilities.CrmUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -37,5 +38,11 @@ public class ProfilePageStepDefs {
 
         Assert.assertEquals(actualEmail,expectedEmail);
         Assert.assertEquals(actualEmailLink,expectedEmailLink);
+    }
+
+    @Then("the email address under the General tab is email for user role {string}")
+    public void theEmailAddressUnderTheGeneralTabIsEmailForUserRole(String userRole) {
+        String email= CrmUtils.getUserNameByRole(userRole);
+        theEmailAddressUnderTheGeneralTabIs(email);
     }
 }
