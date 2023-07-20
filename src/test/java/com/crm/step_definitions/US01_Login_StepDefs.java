@@ -2,7 +2,9 @@ package com.crm.step_definitions;
 
 import com.crm.pages.LoginPage;
 import com.crm.utilities.ConfigurationReader;
+import com.crm.utilities.CrmUtils;
 import com.crm.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -83,8 +85,13 @@ public class US01_Login_StepDefs {
 
 
         }
-
-
+//Alik's
+        @And("user enters valid credentials for user role {string}")
+        public void userEntersValidCredentialsForUserRole(String userRole) {
+                String userName = CrmUtils.getUserNameByRole(userRole);
+                String password = CrmUtils.getPasswordByRole(userRole);
+                loginPage.login(userName,password);
+        }
 }
 
 
