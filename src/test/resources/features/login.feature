@@ -19,4 +19,3 @@ Feature: As a user I should be able to login
       | marketing12@cybertekschool.com | UserUser |
 
 
-
