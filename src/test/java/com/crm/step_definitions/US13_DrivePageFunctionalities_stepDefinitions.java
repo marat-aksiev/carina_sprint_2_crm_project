@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class B29G11255_DrivePageFunctionalities_stepDefinitions {
+public class US13_DrivePageFunctionalities_stepDefinitions {
     private LoginPage loginPage = new LoginPage();
     private DrivePage drivePage = new DrivePage();
 
@@ -28,8 +28,13 @@ public class B29G11255_DrivePageFunctionalities_stepDefinitions {
     }
 
     @Then("user click on the {string} navigation link")
-    public void user_click_on_the_navigation_link(String driver) {
-        drivePage.DriveNavigationLink.click();
+    public void user_click_on_the_navigation_link(String navLink) {
+        for (WebElement eachLink : drivePage.navigationLinks) {
+            if (eachLink.getText().contains(navLink)){
+                eachLink.click();
+                break;
+            }
+        }
     }
 
     @Then("the user should be able to see the following modules in the Drive navigation menu:")
