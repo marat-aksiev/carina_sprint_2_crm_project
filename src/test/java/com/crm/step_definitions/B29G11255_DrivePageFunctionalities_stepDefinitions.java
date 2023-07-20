@@ -11,7 +11,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrivePageFunctionalities_stepDefinitions {
+public class B29G11255_DrivePageFunctionalities_stepDefinitions {
     private LoginPage loginPage = new LoginPage();
     private DrivePage drivePage = new DrivePage();
 
