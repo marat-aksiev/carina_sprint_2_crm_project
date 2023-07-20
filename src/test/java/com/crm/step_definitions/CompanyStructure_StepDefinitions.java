@@ -1,21 +1,35 @@
 package com.crm.step_definitions;
 
+import com.crm.pages.LoginPage;
+import com.crm.utilities.ConfigurationReader;
+import com.crm.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
 
 public class CompanyStructure_StepDefinitions {
+
+    LoginPage loginPage = new LoginPage();
     @Given("user is logged in as HR user")
-    public void isLoggedInAsHRUser(String arg0) {
+    public void isLoggedInAsHRUser() {
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        loginPage.login(ConfigurationReader.getProperty("hr_username"), ConfigurationReader.getProperty("hr_password"));
+        loginPage.loginButton.click();
     }
 
+    JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+    WebElement employeesMenu;
     @When("user navigates to the {string} menu")
-    public void navigatesToTheMenu(String arg0, String arg1) {
+    public void navigatesToTheMenu(String addDepartmentButton) {
+        js.executeScript("arguments[0].scrollIntoView(true)", employeesMenu);
     }
 
     @And("user clicks on {string} button")
-    public void clicksOnButton(String arg0, String arg1) {
+    public void clicksOnButton(String employeesMenu) {
+
     }
 
     @And("user should see a pop-up window")
