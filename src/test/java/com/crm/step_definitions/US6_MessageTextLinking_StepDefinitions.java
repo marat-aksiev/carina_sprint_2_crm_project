@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Set;
 
-public class MessageTextLinking_StepDefinitions {
+public class US6_MessageTextLinking_StepDefinitions {
     PortalPage portalPage = new PortalPage();
     Actions actions = new Actions(Driver.getDriver());
     LoginPage loginPage = new LoginPage();
