@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 import static com.crm.utilities.BrowserUtils.waitForClickablility;
 
-public class ProfilePageStepDefs {
+public class US03_ProfilePage_StepDefs {
 
 
     private ProfilePage page = new ProfilePage();

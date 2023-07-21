@@ -9,11 +9,7 @@ import io.cucumber.java.en.When;
 
 public class US05_UploadingFilesAndPicturesStep_Definitions {
     LoginPage loginPage=new LoginPage();
-    @Given("user is already logged in to the crm app")
-    public void userIsAlreadyLoggedInToTheCrmApp() {
-        Driver.getDriver().get("https://qa.agileprocrm.com/stream/?login=yes");
-        loginPage.login("hr12@cybertekschool.com","UserUser");
-    }
+
 
     UploadPage uploadPage=new UploadPage();
 
@@ -29,7 +25,12 @@ public class US05_UploadingFilesAndPicturesStep_Definitions {
     @And("user uploads files and images through the upload files&images button")
     public void userUploadsFilesAndImagesThroughTheUploadFilesImagesButton() {
         //uploadPage.uploadFilesImagesBtn.click();
-        uploadPage.uploadFilesImagesBtn.sendKeys("C:\\Users\\dell\\Desktop\\file.txt");
+       // uploadPage.uploadFilesImagesBtn.sendKeys("C:\\Users\\dell\\Desktop\\file.txt");
+
+        String projectPath=System.getProperty("user.dir");
+        String filePath="src/test/resources/fileToLoad/file.txt";
+        String fullPath=projectPath+"/"+filePath;
+        uploadPage.uploadFilesImagesBtn.sendKeys(fullPath);
 
     }
 

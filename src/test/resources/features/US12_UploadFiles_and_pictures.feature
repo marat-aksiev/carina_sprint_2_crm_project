@@ -1,38 +1,28 @@
-@B29G11-247
-Feature: user should be able to upload files and pictures as messages
-  User Story: User should be able to upload files and pictures.
-  Supported file formats .pdf, .txt, .jpeg, .png, .docx
-  User should be able to insert the files and images into the text.
-  User should be able to remove files and images at any time before sending
-
-
+@12
+Feature: As a user, I should be able to upload files and pictures to appreciation
 
   Background: User is already logged in
     Given user is on the login page
 
-
-
-  @wip1
-  Scenario Outline: User should be able to upload files and images
+  Scenario Outline: Uploading Files and Images
     Given user enters valid credentials for user role "<role>"
-    When user clicks on the message tab
-    And user clicks on the upload files button
-    And user uploads files and images through the upload files&images button
+    When user click to More  and selects Appreciation
+    And user clicks on the upload files and images
+    And user uploads files and images through the upload files and images button
+
     Examples:
       | role      |
       | hr        |
       | helpdesk  |
       | marketing |
 
-
-
-  @wip2
-  Scenario Outline: User should be able to insert the uploaded files and images in text
+  Scenario Outline: Inserting Files and Images into the Text
     Given user enters valid credentials for user role "<role>"
-    When user clicks on the message tab
-    And user clicks on the upload files button
-    And user uploads files and images through the upload files&images button
+    When user click to More  and selects Appreciation
+    And user clicks on the upload files and images
+    And user uploads files and images through the upload files and images button
     Then user clicks on insert in text button
+
     Examples:
       | role      |
       | hr        |
@@ -40,10 +30,9 @@ Feature: user should be able to upload files and pictures as messages
       | marketing |
 
 
-  @wip3
   Scenario Outline: User should be able to remove files and images from message box before sending
     Given user enters valid credentials for user role "<role>"
-    When user clicks on the message tab
+    When user click to More  and selects Appreciation
     And user clicks on the upload files button
     And user uploads files and images through the upload files&images button
     And user clicks on insert in text button
