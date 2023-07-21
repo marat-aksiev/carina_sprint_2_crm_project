@@ -30,6 +30,10 @@ public class US04_SendMessage_StepDef{
         new LoginPage().login(username,password);
     }
 
+
+    @Given("user is in the message field")
+    public void userIsInTheMessageField() {
+    }
     @When("user clicks   message field")
     public void user_clicks_message_field() {
 
@@ -147,6 +151,7 @@ public class US04_SendMessage_StepDef{
     @When("user clicks on a message field")
     public void userClicksOnAMessageField() {
     }
+
 
 
 }
