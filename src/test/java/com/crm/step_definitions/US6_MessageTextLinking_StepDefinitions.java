@@ -77,13 +77,13 @@ public class US6_MessageTextLinking_StepDefinitions {
     @And("user clicks Log In button")
     public void userClicksLogInButton() {
         loginPage.loginButton.click();
-        wait.until(ExpectedConditions.titleIs("(1) Portal"));
+        wait.until(ExpectedConditions.titleIs("Portal"));
     }
 
     @Then("user is logged in")
     public void userIsLoggedIn() {
         String actualTitle = Driver.getDriver().getTitle();
-        String expectedTitle = "(1) Portal";
+        String expectedTitle = "Portal";
         Assert.assertEquals("Title verification failed", expectedTitle, actualTitle);
     }
 
