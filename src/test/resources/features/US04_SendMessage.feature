@@ -28,7 +28,7 @@ Examples:
 
 
   Scenario: Verify  user is be able to send a message by filling in the mandatory fields
-
+Given user is in the message field
     When  user clicks message field
 
     And user enters "<messageText>" in  message content field
