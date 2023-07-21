@@ -9,11 +9,7 @@ import io.cucumber.java.en.When;
 
 public class US05_UploadingFilesAndPicturesStep_Definitions {
     LoginPage loginPage=new LoginPage();
-    @Given("user is already logged in to the crm app")
-    public void userIsAlreadyLoggedInToTheCrmApp() {
-        Driver.getDriver().get("https://qa.agileprocrm.com/stream/?login=yes");
-        loginPage.login("hr12@cybertekschool.com","UserUser");
-    }
+
 
     UploadPage uploadPage=new UploadPage();
 
