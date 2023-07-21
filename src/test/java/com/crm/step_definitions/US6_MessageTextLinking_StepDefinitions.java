@@ -19,7 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.Set;
 
-public class MessageTextLinking_StepDefinitions {
+public class US6_MessageTextLinking_StepDefinitions {
     PortalPage portalPage = new PortalPage();
     Actions actions = new Actions(Driver.getDriver());
     LoginPage loginPage = new LoginPage();
@@ -77,13 +77,13 @@ public class MessageTextLinking_StepDefinitions {
     @And("user clicks Log In button")
     public void userClicksLogInButton() {
         loginPage.loginButton.click();
-        wait.until(ExpectedConditions.titleIs("(1) Portal"));
+        wait.until(ExpectedConditions.titleIs("Portal"));
     }
 
     @Then("user is logged in")
     public void userIsLoggedIn() {
         String actualTitle = Driver.getDriver().getTitle();
-        String expectedTitle = "(1) Portal";
+        String expectedTitle = "Portal";
         Assert.assertEquals("Title verification failed", expectedTitle, actualTitle);
     }
 
