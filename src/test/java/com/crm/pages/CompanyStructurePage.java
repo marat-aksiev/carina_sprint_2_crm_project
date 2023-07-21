@@ -11,10 +11,10 @@ public class CompanyStructurePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    @FindBy(css=".menu-item-link")
+    @FindBy(xpath="//a[@title='Employees']")
     public WebElement employeesMenu;
 
-    @FindBy(id="pagetitle")
+    @FindBy(xpath="//span[@id='pagetitle']")
     public WebElement companyStructureHeader;
 
     @FindBy(xpath="//span[@class='webform-small-button-text']")

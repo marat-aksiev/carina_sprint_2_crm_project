@@ -19,29 +19,44 @@ import java.time.Duration;
 
 public class US8_CompanyStructure_StepDefinitions {
 
-    CompanyStructurePage companyStructurePage = new CompanyStructurePage();
     LoginPage loginPage = new LoginPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+    CompanyStructurePage companyStructurePage = new CompanyStructurePage();
 
-
-    WebElement employeesMenu;
-    @Given("user navigates to the Employees menu and clicks on it")
-    public void userNavigatesToTheEmployeesMenuAndClicksOnIt() {
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].scrollIntoView(true)", employeesMenu);
-        employeesMenu.click();
+    // user navigates to the Employees menu in order to access Company Structure page
+    @Given("user clicks on the Employees menu")
+    public void userClicksOnTheEmployeesMenu() {
+    //    BrowserUtils.clickWithJS(employeesMenu);
+       companyStructurePage.employeesMenu.click();
     }
 
+    // Company Structure header verification
+    @Then("user sees {string} in the page header")
+    public void userSeesInThePageHeader(String expectedText) {
+        String actualHeaderText = companyStructurePage.companyStructureHeader.getText();
+        Assert.assertEquals(actualHeaderText, expectedText);
+
+    }
+
+    @Then("user does not have add department option")
+    public void doesNotHaveAddDepartmentOption(By by) {
+        BrowserUtils.verifyElementNotDisplayed(By.xpath("//span[@class='webform-small-button-text']"));
+
+
+
+    }
+
+    // HR user navigates to the Add Department button
     @When("user navigates to the Add Department menu and clicks on the button")
     public void userNavigatesToTheAddDepartmentMenuAndClicksOnTheButton() {
         companyStructurePage.addDepartmentButton.click();
     }
 
-    @Then("user should see Add department pop-up window")
-    public void userShouldSeeAddDepartmentPopUpWindow() {
-        companyStructurePage.popUpDepartmentForm.getText();
-
-
+    // HR user gets pop-up window to add new department
+    @Then("user should see {string} pop-up window")
+    public void userShouldSeeAddDepartmentPopUpWindow(String expectedHeaderTitle) {
+        String actualHeaderTitleText = companyStructurePage.popUpDepartmentForm.getText();
+        Assert.assertEquals(actualHeaderTitleText, expectedHeaderTitle);
     }
 
     @When("user clicks on Select from structure text")
@@ -52,8 +67,7 @@ public class US8_CompanyStructure_StepDefinitions {
     @And("user clicks on Company option")
     public void userClicksOnCompanyOption() {
 
-
-        }
+    }
 
 
     @Then("user adds details of new department")
@@ -77,24 +91,8 @@ public class US8_CompanyStructure_StepDefinitions {
     public void userAddedNewDepartmentSuccessfully() {
     }
 
-    @When("user is directed to the {string} page")
-    public void userIsDirectedToTheCompanyStructurePage(String expectedText) {
-        String actualHeaderText = companyStructurePage.companyStructureHeader.getText();
-        Assert.assertEquals(actualHeaderText, expectedText);
 
-    }
 
-    @When("{string} is directed to the Company Structure page")
-    public void isDirectedToTheCompanyStructurePage(String expectedText) {
-        String actualHeaderText = companyStructurePage.companyStructureHeader.getText();
-        Assert.assertEquals(actualHeaderText, expectedText);
-    }
 
-    @Then("{string} does not have Add Department option")
-    public void doesNotHaveAddDepartmentOption(String arg0) {
-    }
 
-    @Then("{string} should see Company Structure page")
-    public void shouldSeeCompanyStructurePage(String arg0) {
-    }
 }
