@@ -25,7 +25,12 @@ public class US05_UploadingFilesAndPicturesStep_Definitions {
     @And("user uploads files and images through the upload files&images button")
     public void userUploadsFilesAndImagesThroughTheUploadFilesImagesButton() {
         //uploadPage.uploadFilesImagesBtn.click();
-        uploadPage.uploadFilesImagesBtn.sendKeys("C:\\Users\\dell\\Desktop\\file.txt");
+       // uploadPage.uploadFilesImagesBtn.sendKeys("C:\\Users\\dell\\Desktop\\file.txt");
+
+        String projectPath=System.getProperty("user.dir");
+        String filePath="src/test/resources/fileToLoad/file.txt";
+        String fullPath=projectPath+"/"+filePath;
+        uploadPage.uploadFilesImagesBtn.sendKeys(fullPath);
 
     }
 
