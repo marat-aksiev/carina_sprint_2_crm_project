@@ -1,0 +1,12 @@
+1-accept invitation
+2-clone project
+3-create your own feature branch/us branch
+4-always work on you own branch, never check out to master
+5-do your work, make commits but be careful about changing common files (cukes runner, pom.xml etc. do not make commit them)
+6-after you have finished your work and everything is ready for push,
+7-update master again without checking out to master
+8-merge master to your own branch
+9-check if there is any conflicts, if there is any it is time to solve it on intellij now, examine the conflict, if possible do not delete conflicting codes, just place them on different locations, have them both
+10-if conflicts are solved, then you are ready to push.
+11-push to your own feature branch
+12-create a PR, assign your peer as reviewer, inform him/her
