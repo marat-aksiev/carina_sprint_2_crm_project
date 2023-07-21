@@ -2,6 +2,7 @@ package com.crm.step_definitions;
 
 import com.crm.pages.CompanyStructurePage;
 import com.crm.pages.LoginPage;
+import com.crm.utilities.BrowserUtils;
 import com.crm.utilities.ConfigurationReader;
 import com.crm.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -9,6 +10,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,24 +23,6 @@ public class US8_CompanyStructure_StepDefinitions {
     LoginPage loginPage = new LoginPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
 
-    @Given("user is on the login page")
-    public void user_is_on_the_login_page() {
-
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-    }
-
-    @When("user enters valid {string} and valid {string}")
-    public void user_enters_valid_credentials(String username, String password) {
-        loginPage.login(username,password);
-    }
-
-    @Then("the user should be able to login and redirected homepage")
-    public void user_can_login_and_redirects_to_homepage() {
-        String actualTitle = Driver.getDriver().getTitle();
-        String expectedTitle = "(1) Portal";
-        Assert.assertEquals("Title verification failed", expectedTitle, actualTitle);
-
-    }
 
     WebElement employeesMenu;
     @Given("user navigates to the Employees menu and clicks on it")
@@ -50,20 +34,27 @@ public class US8_CompanyStructure_StepDefinitions {
 
     @When("user navigates to the Add Department menu and clicks on the button")
     public void userNavigatesToTheAddDepartmentMenuAndClicksOnTheButton() {
-
+        companyStructurePage.addDepartmentButton.click();
     }
 
     @Then("user should see Add department pop-up window")
     public void userShouldSeeAddDepartmentPopUpWindow() {
+        companyStructurePage.popUpDepartmentForm.getText();
+
+
     }
 
     @When("user clicks on Select from structure text")
     public void userClicksOnSelectFromStructureText() {
+        companyStructurePage.selectFromStructure.click();
     }
 
     @And("user clicks on Company option")
     public void userClicksOnCompanyOption() {
-    }
+
+
+        }
+
 
     @Then("user adds details of new department")
     public void userAddsDetailsOfNewDepartment() {
@@ -79,21 +70,31 @@ public class US8_CompanyStructure_StepDefinitions {
 
     @And("user clicks ADD button")
     public void userClicksADDButton() {
+
     }
 
     @Then("user added new department successfully")
     public void userAddedNewDepartmentSuccessfully() {
     }
 
-    @When("user is directed to the Company Structure page")
-    public void userIsDirectedToTheCompanyStructurePage() {
+    @When("user is directed to the {string} page")
+    public void userIsDirectedToTheCompanyStructurePage(String expectedText) {
+        String actualHeaderText = companyStructurePage.companyStructureHeader.getText();
+        Assert.assertEquals(actualHeaderText, expectedText);
+
     }
 
-    @Then("user does not have Add Department option")
-    public void userDoesNotHaveAddDepartmentOption() {
+    @When("{string} is directed to the Company Structure page")
+    public void isDirectedToTheCompanyStructurePage(String expectedText) {
+        String actualHeaderText = companyStructurePage.companyStructureHeader.getText();
+        Assert.assertEquals(actualHeaderText, expectedText);
     }
 
-    @Then("user should see Company Structure page")
-    public void userShouldSeeCompanyStructurePage() {
+    @Then("{string} does not have Add Department option")
+    public void doesNotHaveAddDepartmentOption(String arg0) {
+    }
+
+    @Then("{string} should see Company Structure page")
+    public void shouldSeeCompanyStructurePage(String arg0) {
     }
 }
