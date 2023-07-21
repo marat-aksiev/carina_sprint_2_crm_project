@@ -31,10 +31,10 @@ Feature: As a user I should be able to logout
   Scenario Outline:
     Given user enters valid credentials for user role "<role>"
     When user click on the profile name
-    Then user can see 5 options under profile name
+    Then user can see five options under profile name
       | My profile              |
       | Edit Profile Settings   |
-      | Themes
+      | Themes                  |
       | Configure notifications |
       | Log out                 |
     Examples:
