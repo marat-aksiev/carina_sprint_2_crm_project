@@ -1,16 +1,22 @@
 package com.crm.pages;
 
+import com.crm.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class PollPage extends BasePage{
+public class PollPage extends BasePage {
+
+    public PollPage() {
+        PageFactory.initElements(Driver.getDriver(), this);
+    }
 
     @FindBy(xpath = "//span[text()='Poll']")
     public WebElement pollButton;
 
-    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    @FindBy(xpath = "//body[@contenteditable='true']")
     public WebElement textTitle;
 
     @FindBy(xpath = "//input[@id='question_0']")
@@ -33,5 +39,30 @@ public class PollPage extends BasePage{
 
     @FindBy(xpath = "//span[@class ='feed-add-post-del-but']")
     public WebElement removeAllEmployeesButton;
+
+    @FindBy(xpath = "//div[text() ='Programming Language']")
+    public WebElement publishedPollTitle;
+
+    @FindBy(xpath = "//div[text() ='What language to learn?']")
+    public WebElement publishedQuestion;
+
+    @FindBy(xpath = "//label[text() ='Java']")
+    public WebElement publishedAnswer;
+
+    @FindBy(xpath = "//span[@class='feed-add-info-text']")
+    public WebElement errorMsgAtLeastOnePerson;
+
+    @FindBy(xpath = "//span[@class='feed-add-info-text']")
+    public WebElement errorMsgTheQuestionIsNotSpecified;
+
+    @FindBy(xpath = "//span[@class='feed-add-info-text']")
+    public WebElement errorMsgTheQuestionHasNOAnswer;
+
+    @FindBy(xpath = "//span[text()='The message title is not specified']")
+    public WebElement errorTheMsgTitleIsNotSpecified;
+
+    @FindBy(xpath = "//iframe[@class='bx-editor-iframe']")
+    public WebElement iframe;
+
 
 }
