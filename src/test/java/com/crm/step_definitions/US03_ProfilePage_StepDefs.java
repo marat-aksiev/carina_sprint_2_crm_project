@@ -1,9 +1,10 @@
 package com.crm.step_definitions;
 
+import com.crm.pages.ProfileMenuItems;
 import com.crm.pages.ProfilePage;
 import com.crm.utilities.CrmUtils;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.List;
@@ -16,16 +17,23 @@ public class US03_ProfilePage_StepDefs {
 
     private ProfilePage page = new ProfilePage();
 
-    @And("the user opened profile page")
-    public void theUserOpenedProfilePage() {
+    @When("the user clicks profile menu item {word}")
+    public void theUserClicksProfileMenuItem(String menuItem) {
         page.profileNameButton.click();
-        page.myProfileButton.click();
+        ProfileMenuItems menuItemEnum = ProfileMenuItems.valueOf(menuItem);
+        page.getProfileMenuItem(menuItemEnum).click();
+    }
+
+    @When("the user clicks profile menu item named {string}")
+    public void theUserClicksProfileMenuItemNamed(String menuItem) {
+        page.profileNameButton.click();
+        page.getProfileMenuItem(menuItem).click();
     }
 
     @Then("Following options are accessible on profile page")
     public void followingOptionsAreAccessibleOnProfilePage(List<String> expectedOptions) {
-        page.profileOprions.stream().forEach(each -> waitForClickablility(each, 10));
-        List<String> actualOptions = page.profileOprions.stream().map(each -> each.getText()).collect(Collectors.toList());
+        page.profileOptions.stream().forEach(each -> waitForClickablility(each, 10));
+        List<String> actualOptions = page.profileOptions.stream().map(each -> each.getText()).collect(Collectors.toList());
 
         Assert.assertEquals(expectedOptions,actualOptions);
     }
