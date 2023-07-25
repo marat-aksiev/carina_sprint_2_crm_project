@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CompanyStructurePage {
+public class CompanyStructurePage extends BasePage{
 
     public CompanyStructurePage(){
         PageFactory.initElements(Driver.getDriver(), this);
@@ -49,6 +49,8 @@ public class CompanyStructurePage {
 
     @FindBy(xpath="//div[@class = 'popup-window-buttons']/span[.='Add']")
     public WebElement addButton;
+
+
 
 
 

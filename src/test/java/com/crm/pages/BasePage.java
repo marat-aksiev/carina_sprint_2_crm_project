@@ -41,6 +41,9 @@ public abstract class BasePage {
     @FindBy(xpath = "//ul[@class='menu-items']//li")
     public List <WebElement> navigationLinks;
 
+    @FindBy(xpath="//span[text()[normalize-space() = 'Employees']]")
+    public WebElement employeesTab;
+
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
