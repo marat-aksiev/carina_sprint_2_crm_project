@@ -27,5 +27,6 @@ public class US07_CompanyStructure_StepDefs {
 
     @Then("on the Company structure page user sees {string}")
     public void onTheCompanyStructurePageUserSees(String arg0) {
+
     }
 }
