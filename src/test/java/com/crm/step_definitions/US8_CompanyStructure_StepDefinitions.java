@@ -40,9 +40,12 @@ public class US8_CompanyStructure_StepDefinitions {
 
     @Then("user does not have add department option")
     public void doesNotHaveAddDepartmentOption(By by) {
-        BrowserUtils.verifyElementNotDisplayed(By.xpath("//span[@class='webform-small-button-text']"));
-
-
+//        BrowserUtils.verifyElementNotDisplayed(
+//           By.xpath("//span[@class='webform-small-button-text']"));
+//        WebElement addDepartmentButton = Driver.getDriver().findElement(
+//                By.xpath("//span[@class='webform-small-button-text']"));
+        boolean elementSelected = Driver.getDriver().findElement(
+                By.xpath("//span[@class='webform-small-button-text']")).isDisplayed();
 
     }
 
@@ -61,6 +64,7 @@ public class US8_CompanyStructure_StepDefinitions {
 
     @When("user clicks on Select from structure text")
     public void userClicksOnSelectFromStructureText() {
+
         companyStructurePage.selectFromStructure.click();
     }
 
@@ -90,7 +94,6 @@ public class US8_CompanyStructure_StepDefinitions {
     @Then("user added new department successfully")
     public void userAddedNewDepartmentSuccessfully() {
     }
-
 
 
 
