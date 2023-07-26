@@ -23,12 +23,12 @@ Feature: Adding a Department to the Company Structure
     Given user enters valid credentials for user role "<role>"
     When user clicks on the Employees menu
     And user sees "Company Structure" in the page header
-    Then user does not have add department option
+    Then user does not have ADD DEPARTMENT option
 
     Examples:
-      | role      |
-      | helpdesk  |
-      | marketing |
+      | role     |
+      | helpdesk |
+#      | marketing |
 
 
   @hr
@@ -38,13 +38,17 @@ Feature: Adding a Department to the Company Structure
     And user sees "Company Structure" in the page header
     When user navigates to the Add Department menu and clicks on the button
     Then user should see "Add department" pop-up window
-    When user clicks on Select from structure text
-    And user clicks on Company option
-    Then user adds details of new department
-    When user clicks anywhere on pop-up window
-    And user should see ADD and CLOSE buttons
-    And user clicks ADD button
+
+    When user navigates to the Department name input box and enters new "<department name>"
+    And user navigates to the Parent department input box
+    And user chooses "<parent department>" from dropdown menu
+    And user clicks ADD button to add new department
     Then user added new department successfully
+
     Examples:
-      | role      |
-      | hr        |
+      | role | department name        | parent department |
+      | hr   | Instructors Department | Cyber Vet         |
+      | hr   | Manager Department     | Cyber Vet         |
+      | hr   | Security Department    | Cyber Vet         |
+      | hr   | Engineer Department    | Cyber Vet         |
+

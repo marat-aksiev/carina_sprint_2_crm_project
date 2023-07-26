@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class CompanyStructurePage extends BasePage{
 
     public CompanyStructurePage(){
@@ -24,18 +26,19 @@ public class CompanyStructurePage extends BasePage{
     @FindBy(xpath="//div[@id='BXStructure']")
     public WebElement popUpDepartmentForm;
 
-    @FindBy(xpath="//a[@id='single-user-choice']")
-    public WebElement selectFromStructure;
+//    @FindBy(xpath="//a[@id='single-user-choice']")
+//    public WebElement selectFromStructure;
 
-    @FindBy(xpath="//div[@class='finder-box-tabs']/span[2]//span[2]")
-    public WebElement companyButton;
 
-    // dropdown
-    @FindBy(xpath = "//div[@class='company-structure']")
-    public WebElement getDropdown;
-
-    @FindBy(xpath="//div[@class='company-department-arrow']")
-    public WebElement dropdownButton;
+//    @FindBy(xpath="//div[@class='finder-box-tabs']/span[2]//span[2]")
+//    public WebElement companyButton;
+//
+//    // dropdown
+//    @FindBy(xpath = "//div[@class='company-structure']")
+//    public WebElement getDropdown;
+//
+//    @FindBy(xpath="//div[@class='company-department-arrow']")
+//    public WebElement dropdownButton;
 
     @FindBy(xpath="//input[@id='NAME']")
     public WebElement departmentNameInputBox;

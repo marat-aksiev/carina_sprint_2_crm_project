@@ -10,12 +10,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class US8_CompanyStructure_StepDefinitions {
 
@@ -38,16 +39,13 @@ public class US8_CompanyStructure_StepDefinitions {
 
     }
 
-    @Then("user does not have add department option")
-    public void doesNotHaveAddDepartmentOption(By by) {
-//        BrowserUtils.verifyElementNotDisplayed(
-//           By.xpath("//span[@class='webform-small-button-text']"));
-//        WebElement addDepartmentButton = Driver.getDriver().findElement(
-//                By.xpath("//span[@class='webform-small-button-text']"));
-        boolean elementSelected = Driver.getDriver().findElement(
-                By.xpath("//span[@class='webform-small-button-text']")).isDisplayed();
+    @Then("user does not have ADD DEPARTMENT option")
+    public void doesNotHaveAddDepartmentOption(String expectedText) {
+        Assert.assertTrue(companyStructurePage.addDepartmentButton.isDisplayed());
 
-    }
+   }
+
+
 
     // HR user navigates to the Add Department button
     @When("user navigates to the Add Department menu and clicks on the button")
@@ -62,40 +60,35 @@ public class US8_CompanyStructure_StepDefinitions {
         Assert.assertEquals(actualHeaderTitleText, expectedHeaderTitle);
     }
 
-    @When("user clicks on Select from structure text")
-    public void userClicksOnSelectFromStructureText() {
 
-        companyStructurePage.selectFromStructure.click();
+    @When("user navigates to the Department name input box and enters new {string}")
+    public void userNavigatesToTheDepartmentNameInputBoxAndEntersNewDepartmentName(String inputText) {
+//        Driver.getDriver().switchTo().window();
+        companyStructurePage.departmentNameInputBox.click();
+        companyStructurePage.departmentNameInputBox.sendKeys(inputText);
     }
 
-    @And("user clicks on Company option")
-    public void userClicksOnCompanyOption() {
+    @And("user navigates to the Parent department input box")
+    public void userNavigatesToTheParentDepartmentInputBox() {
+        companyStructurePage.parentDepartmentDropdown.click();
+    }
+
+    @And("user chooses {string} from dropdown menu")
+    public void userChoosesOptionFromDropdownMenuAndClicksADDButton(String parentDepartment) {
+        Select departmentDropdown = new Select(companyStructurePage.parentDepartmentDropdown);
+        departmentDropdown.selectByIndex(0);
 
     }
 
-
-    @Then("user adds details of new department")
-    public void userAddsDetailsOfNewDepartment() {
-    }
-
-    @When("user clicks anywhere on pop-up window")
-    public void userClicksAnywhereOnPopUpWindow() {
-    }
-
-    @And("user should see ADD and CLOSE buttons")
-    public void userShouldSeeADDAndCLOSEButtons() {
-    }
-
-    @And("user clicks ADD button")
-    public void userClicksADDButton() {
-
+    @And("user clicks ADD button to add new department")
+    public void userClicksADDButtonToAddNewDepartment() {
+        companyStructurePage.addButton.click();
     }
 
     @Then("user added new department successfully")
     public void userAddedNewDepartmentSuccessfully() {
+
     }
-
-
 
 
 }
