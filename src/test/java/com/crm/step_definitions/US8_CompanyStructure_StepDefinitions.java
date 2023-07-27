@@ -10,91 +10,92 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class US8_CompanyStructure_StepDefinitions {
 
-    CompanyStructurePage companyStructurePage = new CompanyStructurePage();
     LoginPage loginPage = new LoginPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+    CompanyStructurePage companyStructurePage = new CompanyStructurePage();
 
-
-    WebElement employeesMenu;
-    @Given("user navigates to the Employees menu and clicks on it")
-    public void userNavigatesToTheEmployeesMenuAndClicksOnIt() {
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].scrollIntoView(true)", employeesMenu);
-        employeesMenu.click();
+    // user navigates to the Employees menu in order to access Company Structure page
+    @Given("user clicks on the Employees menu")
+    public void userClicksOnTheEmployeesMenu() {
+    //    BrowserUtils.clickWithJS(employeesMenu);
+       companyStructurePage.employeesMenu.click();
     }
 
+    // Company Structure header verification
+    @Then("user sees {string} in the page header")
+    public void userSeesInThePageHeader(String expectedText) {
+        String actualHeaderText = companyStructurePage.companyStructureHeader.getText();
+        Assert.assertEquals(actualHeaderText, expectedText);
+
+    }
+
+    @Then("user does not have ADD DEPARTMENT option")
+    public void doesNotHaveAddDepartmentOption() {
+//        Driver.getDriver().findElements(By.xpath("//span[@class='webform-small-button-text']"));
+        try {
+            WebElement el = companyStructurePage.addDepartmentButton;
+        } catch (NoSuchElementException e) {
+            Assert.assertFalse(false);
+
+        }
+//        Assert.assertFalse(companyStructurePage.addDepartmentButton.isDisplayed());
+
+   }
+
+
+
+    // HR user navigates to the Add Department button
     @When("user navigates to the Add Department menu and clicks on the button")
     public void userNavigatesToTheAddDepartmentMenuAndClicksOnTheButton() {
         companyStructurePage.addDepartmentButton.click();
     }
 
+    // HR user gets pop-up window to add new department
     @Then("user should see Add department pop-up window")
     public void userShouldSeeAddDepartmentPopUpWindow() {
-        companyStructurePage.popUpDepartmentForm.getText();
+        Assert.assertTrue(companyStructurePage.popUpDepartmentForm.isDisplayed());
+    }
+
+
+    @When("user navigates to the Department name input box and enters new {string}")
+    public void userNavigatesToTheDepartmentNameInputBoxAndEntersNewDepartmentName(String inputText) {
+//        companyStructurePage.departmentNameInputBox.click();
+        companyStructurePage.departmentNameInputBox.sendKeys(inputText);
 
 
     }
 
-    @When("user clicks on Select from structure text")
-    public void userClicksOnSelectFromStructureText() {
-        companyStructurePage.selectFromStructure.click();
+    @And("user navigates to the Parent department input box")
+    public void userNavigatesToTheParentDepartmentInputBox() {
+        companyStructurePage.parentDepartmentDropdown.click();
     }
 
-    @And("user clicks on Company option")
-    public void userClicksOnCompanyOption() {
+    @And("user chooses {string} from dropdown menu")
+    public void userChoosesOptionFromDropdownMenuAndClicksADDButton(String parentDepartment) {
+        Select departmentDropdown = new Select(companyStructurePage.parentDepartmentDropdown);
+        departmentDropdown.selectByIndex(0);
 
-
-        }
-
-
-    @Then("user adds details of new department")
-    public void userAddsDetailsOfNewDepartment() {
     }
 
-    @When("user clicks anywhere on pop-up window")
-    public void userClicksAnywhereOnPopUpWindow() {
-    }
-
-    @And("user should see ADD and CLOSE buttons")
-    public void userShouldSeeADDAndCLOSEButtons() {
-    }
-
-    @And("user clicks ADD button")
-    public void userClicksADDButton() {
-
+    @And("user clicks ADD button to add new department")
+    public void userClicksADDButtonToAddNewDepartment() {
+        companyStructurePage.addButton.click();
     }
 
     @Then("user added new department successfully")
     public void userAddedNewDepartmentSuccessfully() {
-    }
-
-    @When("user is directed to the {string} page")
-    public void userIsDirectedToTheCompanyStructurePage(String expectedText) {
-        String actualHeaderText = companyStructurePage.companyStructureHeader.getText();
-        Assert.assertEquals(actualHeaderText, expectedText);
 
     }
 
-    @When("{string} is directed to the Company Structure page")
-    public void isDirectedToTheCompanyStructurePage(String expectedText) {
-        String actualHeaderText = companyStructurePage.companyStructureHeader.getText();
-        Assert.assertEquals(actualHeaderText, expectedText);
-    }
 
-    @Then("{string} does not have Add Department option")
-    public void doesNotHaveAddDepartmentOption(String arg0) {
-    }
-
-    @Then("{string} should see Company Structure page")
-    public void shouldSeeCompanyStructurePage(String arg0) {
-    }
 }
