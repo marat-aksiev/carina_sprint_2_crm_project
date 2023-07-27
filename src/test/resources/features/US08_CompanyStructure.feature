@@ -28,7 +28,7 @@ Feature: Adding a Department to the Company Structure
     Examples:
       | role     |
       | helpdesk |
-#      | marketing |
+      | marketing |
 
 
   @hr
