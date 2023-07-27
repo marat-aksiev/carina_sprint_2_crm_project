@@ -94,7 +94,7 @@ public class US8_CompanyStructure_StepDefinitions {
 
     @Then("user added new department successfully")
     public void userAddedNewDepartmentSuccessfully() {
-
+        Assert.assertTrue(companyStructurePage.newDepartment.isDisplayed());
     }
 
 

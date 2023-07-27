@@ -53,6 +53,9 @@ public class CompanyStructurePage extends BasePage{
     @FindBy(xpath="//div[@class = 'popup-window-buttons']/span[.='Add']")
     public WebElement addButton;
 
+    @FindBy(xpath="//span[@id='bx_str_149']")
+    public WebElement newDepartment;
+
 
 
 
