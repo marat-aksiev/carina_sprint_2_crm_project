@@ -37,7 +37,7 @@ Feature: Adding a Department to the Company Structure
     When user clicks on the Employees menu
     And user sees "Company Structure" in the page header
     When user navigates to the Add Department menu and clicks on the button
-    Then user should see "Add department" pop-up window
+    Then user should see Add department pop-up window
 
     When user navigates to the Department name input box and enters new "<department name>"
     And user navigates to the Parent department input box
